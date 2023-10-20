@@ -1,10 +1,226 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>My GitHub Pages Website</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css"/>
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
+    </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is the main page of my GitHub Pages website.</p>
+    <py-script>
+        def char_frequency(str1):
+    dict = {}
+    for n in str1:
+        keys = dict.keys()
+        if n in keys:
+            dict[n] += 1
+        else:
+            dict[n] = 1
+
+
+while True:
+    inp_teks = input("Masukkan text: ")
+    count = 0
+    for i in range(0, len(inp_teks)):
+        count = count + 1
+    jumlah_text = (count)
+    if len(inp_teks) % 3 != 0:
+        print("Tidak Memenuhi")
+        continue
+    print("Memenuhi")
+    break
+
+code = []
+code.append(input("Masukkan angka warna merah = "))
+code.append(input("Masukkan angka warna hijau = "))
+code.append(input("Masukkan angka warna biru = "))
+inp_hexa = input("Masukkan heksa: ")
+
+
+print("angka rgb",code)
+#####Variabel input#######
+key = list(inp_hexa)
+print("angka heksa",key)
+#####Variabel 2#######
+jumlah_baris = int(jumlah_text/3)
+print("jumlah baris = ", jumlah_baris)
+def enkripsiPesan(kunci, pesan):
+    sanditeks = [''] * kunci
+    for col in range(kunci):
+        pointer = col
+        while pointer < len(pesan):
+            sanditeks[col] += pesan[pointer]
+            pointer += kunci
+    return sanditeks
+pesanSaya = inp_teks
+kunciSaya = 3
+sanditeks = enkripsiPesan(kunciSaya, pesanSaya)
+sandi_posisi = sanditeks
+print("pt_1 =",sandi_posisi)
+
+#####sesudah chiper transposisi##########
+def vernam_encrypt():
+
+    key1 = ["","",""]
+    gabungan = []
+    for y in range(len(sandi_posisi)):
+        t = 0
+        for i in range(len(sandi_posisi[y])):
+            for x in code[y]:
+                key1[y] += str(x)
+                if len(key1[y])==len(sandi_posisi[y]):
+                    break
+            if len(key1[y])==len(sandi_posisi[y]):
+                break
+    for y in range(len(sandi_posisi)):
+        for i in range(len(sandi_posisi[y])):
+            if sandi_posisi[y][i]==' ':
+                gabungan.append(' ')
+            else:
+                t = int((ord((sandi_posisi[y][i].upper()))-65)+int(key1[y][i]))
+                if (t+65) > 90:
+                    t -= 26
+                    gabungan.append(chr(t+65).lower())
+                else:
+                    gabungan.append(chr(t+65).lower())
+
+    gabungan = "".join(gabungan)
+    print("pt_2 =", gabungan)
+    HURUF = 'abcdefghijklmnopqrstuvwxyz'
+    jumlah_text = (count)
+
+    string = inp_teks
+    ######kunci dibangkitkan 1########
+    Diskriminan_A = (int(code[0][0]) * int(code[1][1]) * int(code[2][2])) + (int(code[0][1]) * int(code[1][2]) * int(code[2][0])) + (
+                int(code[0][2]) * int(code[1][0]) * int(code[2][1])) - (int(code[0][1]) * int(code[1][1]) * int(code[2][0])) - (
+                                int(code[0][1]) * int(code[1][0]) * int(code[2][2])) - (int(code[0][0]) * int(code[1][2]) * int(code[2][1]))
+    ##################chaesar chiper 1#########
+    import string
+    kunci_jumlah = string.ascii_lowercase
+    if jumlah_text >= 26:
+        hasil_jumlah = 26
+    else:
+        hasil_jumlah = count
+    hasil_angka = kunci_jumlah[:hasil_jumlah]
+    plain_text = hasil_angka
+    shift = int(Diskriminan_A)
+    shift %= 26
+
+    alphabet = string.ascii_lowercase
+    shifted = alphabet[shift:] + alphabet[:shift]
+    table = str.maketrans(alphabet, shifted)
+    encrypted = plain_text.translate(table)
+    hasil_hitungan = encrypted
+    print("kb_1=",hasil_hitungan)
+    HURUF = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    def main():
+        pesanSaya = gabungan
+        kunciSaya = hasil_hitungan
+        ubah = enkripsiPesan(kunciSaya, pesanSaya)
+        print("pt_3 =", ubah)
+        count_rotation = int(Diskriminan_A) % int(jumlah_text)
+        count_left = int(jumlah_text) - int(count_rotation)
+        part_left = ubah[0:0 + count_left]
+        shiftk = []
+        if Diskriminan_A == 0:
+            part_right = ''
+        else:
+            part_right = ubah[-count_rotation:]
+        pergeseran = (part_right + part_left)
+        print("pt_4", pergeseran)
+
+
+        for i in range(6):
+            if key[i].isalpha() == True:
+                input = key[i]
+                input = input.lower()
+                output = []
+                for character in input:
+                    number = ord(character) - 96
+                    output.append(str(number))
+                shiftk.append(int("".join(output)))
+            else:
+                shiftk.append(key[i])
+        print("shiftk", shiftk)
+        # mulai pergeseran##
+        count_text = jumlah_text
+
+        for i in range(0,6):
+            if key[i].isalpha() == True:
+                count_rotation = int(shiftk[i]) % int(count_text)
+                count_left = int(count_text) - int(count_rotation)
+                part_left = pergeseran[0:0 + count_left]
+                if count_rotation == 0:
+                    part_right = ''
+                else:
+                    part_right = pergeseran[-count_rotation:]
+                pergeseran = (part_right + part_left)
+            else:
+                shift = int(shiftk[i])
+                shift %= 26
+                alphabet = string.ascii_lowercase
+                shifted = alphabet[shift:] + alphabet[:shift]
+                table = str.maketrans(alphabet, shifted)
+                pergeseran = pergeseran.translate(table)
+
+
+        final_pergeseran = pergeseran[:jumlah_text]
+        print("pt_5",final_pergeseran)
+        angka_kunci = (int(shiftk[0]) * int(shiftk[1]) * int(shiftk[2]) * int(shiftk[3]) * int(shiftk[4]) * int(shiftk[5]))
+        kunci_jumlah = string.ascii_lowercase
+        inp_text = kunci_jumlah[:count]
+        inp_shi = int(angka_kunci)
+
+        plain_text = inp_text
+        shift = inp_shi
+        shift %= 26
+        alphabet = string.ascii_lowercase
+        shifted = alphabet[shift:] + alphabet[:shift]
+        table = str.maketrans(alphabet, shifted)
+        kb_2 = plain_text.translate(table)
+        hasil_kunci = kb_2
+        print("kb_2 = ",kb_2)
+        kunciSaya = hasil_kunci
+        pesanSaya = final_pergeseran
+        hasil_akhir= enkripsiPesan(kunciSaya, pesanSaya)
+        hasil_final = hasil_akhir.replace(" ", "_")
+        print()
+        print("")
+        print("hasilnya")
+        print(hasil_final)
+
+    def enkripsiPesan(kunci, pesan):
+        return ubahPesan(kunci, pesan, 'enkripsi')
+
+    def ubahPesan(kunci, pesan, mode):
+        ubah = []
+        kunciIndex = 0
+        kunci = kunci.upper()
+
+        for symbol in pesan:
+            nomor = HURUF.find(symbol.upper())
+            if nomor != -1:
+                if mode == 'enkripsi':
+                    nomor += HURUF.find(kunci[kunciIndex])
+
+                nomor %= len(HURUF)
+                if symbol.isupper():
+                    ubah.append(HURUF[nomor])
+                elif symbol.islower():
+                    ubah.append(HURUF[nomor].lower())
+
+                kunciIndex += 1
+                if kunciIndex == len(kunci):
+                    kunciIndex = 0
+
+            else:
+                ubah.append(symbol)
+
+        return ''.join(ubah)
+
+    if __name__ == '__main__':
+        main()
+vernam_encrypt()
+
+    </py-script>
 </body>
 </html>
