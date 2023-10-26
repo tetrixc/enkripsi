@@ -6,7 +6,7 @@
     </head>
 <body>
     <py-script>
-        def char_frequency(str1):
+def char_frequency(str1):
     dict = {}
     for n in str1:
         keys = dict.keys()
@@ -17,31 +17,31 @@
 
 
 while True:
-    inp_teks = input("Masukkan text: ")
+    inp_teks = input("Input text: ")
     count = 0
     for i in range(0, len(inp_teks)):
         count = count + 1
     jumlah_text = (count)
     if len(inp_teks) % 3 != 0:
-        print("Tidak Memenuhi")
+        print("Requirements unfulfilled")
         continue
-    print("Memenuhi")
+    print("Requirements fulfilled")
     break
 
 code = []
-code.append(input("Masukkan angka warna merah = "))
-code.append(input("Masukkan angka warna hijau = "))
-code.append(input("Masukkan angka warna biru = "))
-inp_hexa = input("Masukkan heksa: ")
+code.append(input("Enter the red color code = "))
+code.append(input("Enter the green color code = "))
+code.append(input("Enter the blue color code = "))
+inp_hexa = input("Enter hexadecimal code: ")
 
 
-print("angka rgb",code)
+print("rgb number",code)
 #####Variabel input#######
 key = list(inp_hexa)
-print("angka heksa",key)
+print("hexadecimal number",key)
 #####Variabel 2#######
 jumlah_baris = int(jumlah_text/3)
-print("jumlah baris = ", jumlah_baris)
+print("number of rows = ", jumlah_baris)
 def enkripsiPesan(kunci, pesan):
     sanditeks = [''] * kunci
     for col in range(kunci):
@@ -184,9 +184,9 @@ def vernam_encrypt():
         hasil_akhir= enkripsiPesan(kunciSaya, pesanSaya)
         hasil_final = hasil_akhir.replace(" ", "_")
         print()
-        print("")
-        print("hasilnya")
-        print(hasil_final)
+        print("The result is : ",hasil_final)
+
+
 
     def enkripsiPesan(kunci, pesan):
         return ubahPesan(kunci, pesan, 'enkripsi')
